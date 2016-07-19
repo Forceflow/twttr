@@ -1,9 +1,15 @@
+// Configure variables
 var TWEETLIMIT = 140;
+var tweet_area = "#tweettext"
 
+// Define rule objects here
+
+
+// Update tweet character count
 function updateCharcount(){
 	var length = 0;
-	if ($("#tweettext").val() !== undefined){
-		var length = $("#tweettext").val().length;
+	if ($(tweet_area).val() !== undefined){
+		var length = $(tweet_area).val().length;
 	}
 	$("#charcount").text(length);
 	if(length <= TWEETLIMIT){
