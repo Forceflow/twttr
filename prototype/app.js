@@ -6,7 +6,8 @@ var undo_history = []; // undo history
 
 // Define rule objects here
 var rules = [];
-rules.push({name:"Misschien", pattern:/misschien/i, replace:"mss"})
+rules.push({name:"Misschien", pattern:/misschien/i, replace:"mss"});
+rules.push({name:"Inderdaad", pattern:/inderdaad/i, replace:"idd"});
 
 // TODO: we need case matching replace
 
