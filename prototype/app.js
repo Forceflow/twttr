@@ -7,7 +7,7 @@ var undo_history = []; // undo history
 // Define rule objects here
 var rules = [];
 rules.push({name:"Misschien", pattern: new RegExp('\\bmisschien\\b', 'ig'), replace:"mss"});
-rules.push({name:"Inderdaad", pattern: new RegExp('\\binderdaad\\b', 'ig'), replace:"inderdaad"});
+rules.push({name:"Inderdaad", pattern: new RegExp('\\binderdaad\\b', 'ig'), replace:"idd"});
 
 // TODO: we need case matching replace
 
