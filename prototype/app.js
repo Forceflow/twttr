@@ -16,6 +16,8 @@ var rules = [];
 // Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries
 rules.push(new Rule("Misschien", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
 rules.push(new Rule("Inderdaad", new RegExp('\\b(i)nderdaad\\b', 'ig'), "$1dd"));
+rules.push(new Rule("Met behulp van", new RegExp('\\b(m)et\\sbehulp\\svan\\b', 'ig'), "$1bv"));
+rules.push(new Rule("Van de", new RegExp('\\b(v)an\\s(d)e\\b', 'ig'), "$1$2"));
 
 // Update tweet character counter
 function updateCharcount(){
