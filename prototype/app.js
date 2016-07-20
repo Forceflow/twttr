@@ -4,12 +4,18 @@ var tweet_area = "#tweettext";
 var character_count = "#charcount";
 var undo_history = []; // undo history
 
-// Define rule objects here
-var rules = [];
-rules.push({name:"Misschien", pattern: new RegExp('\\bmisschien\\b', 'ig'), replace:"mss"});
-rules.push({name:"Inderdaad", pattern: new RegExp('\\binderdaad\\b', 'ig'), replace:"idd"});
+// This is a rule object
+function Rule(name, pattern, replace){
+	this.name = name;
+	this.pattern = pattern;
+	this.replace = replace;
+}
 
-// TODO: we need case matching replace
+// Define rules here
+var rules = [];
+// Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries
+rules.push(new Rule("Misschien", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
+rules.push(new Rule("Inderdaad", new RegExp('\\b(i)nderdaad\\b', 'ig'), "$1dd"));
 
 // Update tweet character counter
 function updateCharcount(){
