@@ -97,7 +97,7 @@ rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "
 rules.push(new Rule("Inderdaad -> Idd", new RegExp('\\b(i)nderdaad\\b', 'ig'), "$1dd"));
 rules.push(new Rule("Namelijk -> Nl", new RegExp('\\b(n)amelijk\\b', 'ig'), "$1l"));
 rules.push(new Rule("Voornamelijk -> Vnl", new RegExp('\\b(v)oornamelijk\\b', 'ig'), "$1nl"));
-rules.push(new Rule("Bijvoorbeeld -> Bv", new RegExp('\\b(b)ijvoorbeeld\\b', 'ig'), "$1b"));
+rules.push(new Rule("Bijvoorbeeld -> Bv", new RegExp('\\b(b)ijvoorbeeld\\b', 'ig'), "$1v"));
 rules.push(new Rule("Waarschijnlijk -> Waarsch", new RegExp('\\b(w)aarschijnlijk\\b', 'ig'), "$1aarsch"));
 rules.push(new Rule("Waarom -> Wrm", new RegExp('\\b(w)aarom\\b', 'ig'), "$1rm"));
 rules.push(new Rule("Eventueel -> Evt", new RegExp('\\b(e)ventueel\\b', 'ig'), "$1vt"));
