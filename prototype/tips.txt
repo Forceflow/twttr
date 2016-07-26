@@ -1,4 +1,15 @@
-﻿tips
+﻿kwil
+kmoet
+kzal
+
+
+
+
+
+
+
+
+
 
 allemaal = allen
 Met : mt
@@ -6,26 +17,19 @@ naar = nr
 bijvoorbeeld = bv
 waarschijnlijk : waarsch
 in vergelijking met = ivm
+Dat is = das
+aan de hand van =  adhv
+straks = strax
+vanavond = vnvd
+mijn = m'n
+één = 1
+
 
 
 alleen=enkel
-
-
-
 zichzelf = zz
-Dat is = das
-straks = strax
-vanavond = vnvd
 en de regels van 'en' vervangen door '&' doe ik alleen maar als de '&' op eind van de tweet komt
-telkens maar één karakter winst, maar op de meest onopvallende manier
 bijvoorbeeld hij zei toen 'allé dat is straf' wordt dan hij zei toen: allé dat is straf
-All of these are good, kan ik meteen regeltjes van maken
-
 aanhalingstekens weglaten en ipvéén keer dubbel punt
-één = 1
 en maak passieve zinnen actief (maar dat kan je moeilijk robotiseren)
-aan de hand van =  adhv
-waarschijnlijk : waarsch
 en = &
-mijn = m'n
-aha - wel, ik haal er juist mij fierheid uit om zoveel mogelijk dat niet te doen, zodat het lijkt of ik perfect ben

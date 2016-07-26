@@ -4,28 +4,6 @@ var tweet_area = "#tweettext";
 var character_count = "#charcount";
 var undo_history = []; // undo history
 
-// This is a rule object
-function Rule(name, pattern, replace){
-	this.name = name;
-	this.pattern = pattern;
-	this.replace = replace;
-}
-
-// Define rules here
-var rules = [];
-// Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries
-rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
-rules.push(new Rule("Inderdaad -> Idd", new RegExp('\\b(i)nderdaad\\b', 'ig'), "$1dd"));
-rules.push(new Rule("Met behulp van -> Mbv", new RegExp('\\b(m)et\\sbehulp\\svan\\b', 'ig'), "$1bv"));
-rules.push(new Rule("Van de -> Vd", new RegExp('\\b(v)an\\s(d)e\\b', 'ig'), "$1$2"));
-rules.push(new Rule("Bijvoorbeeld -> Bv", new RegExp('\\b(b)ijvoorbeeld\\b', 'ig'), "$1b"));
-rules.push(new Rule("Waarschijnlijk -> Waarsch", new RegExp('\\b(w)aarschijnlijk\\b', 'ig'), "$1aarsch"));
-rules.push(new Rule("In Vergelijking Met -> ivm", new RegExp('\\b(i)n\\s(v)ergelijking\\s(m)et\\b', 'ig'), "$1$2$3"));
-
-rules.push(new Rule("Allemaal -> Allen", new RegExp('\\b(a)llemaal\\b', 'ig'), "$1llen"));
-rules.push(new Rule("Met -> Mt", new RegExp('\\b(m)et\\b', 'ig'), "$1t"));
-rules.push(new Rule("Naar -> Nr", new RegExp('\\b(n)aar\\b', 'ig'), "$1r"));
-
 // Update tweet character counter
 function updateCharcount(){
 	var length = 0;
