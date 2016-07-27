@@ -5,14 +5,22 @@ function Rule(name, pattern, replace){
 	this.replace = replace;
 }
 
+function RuleStat(used, savings){
+	this.used = used;
+	this.savings = savings;
+}
+
 // Define rules here
 var rules = [];
+var rules_stats = [];
 
 // Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries
 
 // todo: meer samentrekkingen (ik heb -> kheb, kmoet, kzal)
-// todo: get funky met leestekens (whitespace achter komma of dubbelpunt wegdoen, ...)
+// todo: get funky met leestekens (whitespace achter komma of dubbelpunt wegdoen, drie puntjes naar 2 puntjes, foefelen met aanhalingstekens, twee spaties naar 1)
 // todo: regels om getallen te vervangen
+// todo: synoniemen zoals tevens ook
+// todo: tautologieen
 
 // Algemeen aanvaard, zie https://nl.wikipedia.org/wiki/Lijst_van_afkortingen_in_het_Nederlands
 rules.push(new Rule("In combinatie met -> Icm", new RegExp('\\b(i)n\\scombinatie\\smet\\b', 'ig'), "$1cm"));
@@ -94,17 +102,25 @@ rules.push(new Rule("Decibel -> dB", new RegExp('decibel', 'ig'), "dB"));
 rules.push(new Rule("Dollar -> $", new RegExp('\\bdollar\\b', 'ig'), "$"));
 
 // numbers
+rules.push(new Rule("Eerste -> 1e", new RegExp('\\beerste\\b', 'ig'), "1e"));
 rules.push(new Rule("Twee -> 2", new RegExp('\\btwee\\b', 'ig'), "2"));
-rules.push(new Rule("Tweede -> 2de", new RegExp('\\btweede\\b', 'ig'), "2e"));
+rules.push(new Rule("Tweede -> 2e", new RegExp('\\btweede\\b', 'ig'), "2e"));
 rules.push(new Rule("Drie -> 3", new RegExp('\\bdrie\\b', 'ig'), "3"));
-rules.push(new Rule("Derde -> 3de", new RegExp('\\bderde\\b', 'ig'), "3e"));
+rules.push(new Rule("Derde -> 3e", new RegExp('\\bderde\\b', 'ig'), "3e"));
 rules.push(new Rule("Vier -> 4", new RegExp('\\bvier\\b', 'ig'), "4"));
-rules.push(new Rule("Vijf -> 5", new RegExp('\\btwee\\b', 'ig'), "5"));
-rules.push(new Rule("Zes -> 6", new RegExp('\\btwee\\b', 'ig'), "6"));
+rules.push(new Rule("Vierde -> 4e", new RegExp('\\bvierde\\b', 'ig'), "4e"));
+rules.push(new Rule("Vijf -> 5", new RegExp('\\bvijf\\b', 'ig'), "5"));
+rules.push(new Rule("Vijfde -> 5e", new RegExp('\\bvijfde\\b', 'ig'), "5e"));
+rules.push(new Rule("Zes -> 6", new RegExp('\\bzes\\b', 'ig'), "6"));
+rules.push(new Rule("Zesde -> 6e", new RegExp('\\bzesde\\b', 'ig'), "6e"));
 rules.push(new Rule("Zeven -> 7", new RegExp('\\bzeven\\b', 'ig'), "7"));
+rules.push(new Rule("Zevende -> 7e", new RegExp('\\bzevende\\b', 'ig'), "7e"));
 rules.push(new Rule("Acht -> 8", new RegExp('\\bacht\\b', 'ig'), "8"));
+rules.push(new Rule("Achtste -> 8e", new RegExp('\\bachtste\\b', 'ig'), "8e"));
 rules.push(new Rule("Negen -> 9", new RegExp('\\bnegen\\b', 'ig'), "9"));
+rules.push(new Rule("Negende -> 9e", new RegExp('\\bnegende\\b', 'ig'), "9e"));
 rules.push(new Rule("Tien -> 10", new RegExp('\\btien\\b', 'ig'), "10"));
+rules.push(new Rule("Tiende -> 10e", new RegExp('\\btiende\\b', 'ig'), "10e"));
 
 // Less common
 rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
