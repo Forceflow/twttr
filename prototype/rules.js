@@ -60,10 +60,11 @@ rules.push(new Rule("Laboratorium -> Lab", new RegExp('\\b(d)e\\sheer\\b', 'ig')
 // Scientific units
 //Time
 rules.push(new Rule("Uur -> u", new RegExp('\\buur\\b', 'ig'), "u"));
-rules.push(new Rule("Minuut -> m", new RegExp('\\bminuut\\b', 'ig'), "m"));
-rules.push(new Rule("Seconde -> s", new RegExp('\\bseconde\\b', 'ig'), "s"));
+rules.push(new Rule("Minuut -> m", new RegExp('\\bminuut\\b', 'ig'), "min"));
+rules.push(new Rule("Minuten -> m", new RegExp('\\bminuten\\b', 'ig'), "min"));
+rules.push(new Rule("Seconde -> s", new RegExp('\\bseconde\\b', 'ig'), "sec"));
+rules.push(new Rule("Seconden -> s", new RegExp('\\bseconden\\b', 'ig'), "sec"));
 rules.push(new Rule("Milliseconde -> s", new RegExp('\\bmilliseconde\\b', 'ig'), "ms"));
-rules.push(new Rule("Seconden -> s", new RegExp('\\bseconden\\b', 'ig'), "s"));
 rules.push(new Rule("Milliseconden -> s", new RegExp('\\bmilliseconden\\b', 'ig'), "ms"));
 //Distance
 rules.push(new Rule("Meter -> m", new RegExp('\\bmeter\\b', 'ig'), "m"));
@@ -91,6 +92,19 @@ rules.push(new Rule("Decibel -> dB", new RegExp('decibel', 'ig'), "dB"));
 // Monetary value
 // rules.push(new Rule("Euro -> €", new RegExp('\\beuro\\b', 'ig'), "€"));
 rules.push(new Rule("Dollar -> $", new RegExp('\\bdollar\\b', 'ig'), "$"));
+
+// numbers
+rules.push(new Rule("Twee -> 2", new RegExp('\\btwee\\b', 'ig'), "2"));
+rules.push(new Rule("Tweede -> 2de", new RegExp('\\btweede\\b', 'ig'), "2e"));
+rules.push(new Rule("Drie -> 3", new RegExp('\\bdrie\\b', 'ig'), "3"));
+rules.push(new Rule("Derde -> 3de", new RegExp('\\bderde\\b', 'ig'), "3e"));
+rules.push(new Rule("Vier -> 4", new RegExp('\\bvier\\b', 'ig'), "4"));
+rules.push(new Rule("Vijf -> 5", new RegExp('\\btwee\\b', 'ig'), "5"));
+rules.push(new Rule("Zes -> 6", new RegExp('\\btwee\\b', 'ig'), "6"));
+rules.push(new Rule("Zeven -> 7", new RegExp('\\bzeven\\b', 'ig'), "7"));
+rules.push(new Rule("Acht -> 8", new RegExp('\\bacht\\b', 'ig'), "8"));
+rules.push(new Rule("Negen -> 9", new RegExp('\\bnegen\\b', 'ig'), "9"));
+rules.push(new Rule("Tien -> 10", new RegExp('\\btien\\b', 'ig'), "10"));
 
 // Less common
 rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
@@ -124,6 +138,7 @@ rules.push(new Rule("Website -> Site", new RegExp('\\bwebsite\\b', 'ig'), "site"
 
 rules.push(new Rule("Vanavond -> Vnvd", new RegExp('\\b(v)anavond\\b', 'ig'), "$1nvd"));
 rules.push(new Rule("Vandaag -> Vdaag", new RegExp('\\b(v)andaag\\b', 'ig'), "$1daag"));
+rules.push(new Rule("Morgen -> Mrgn", new RegExp('\\b(m)orgen\\b', 'ig'), "$1rgn"));
 rules.push(new Rule("Week -> Wk", new RegExp('\\b(w)eek\\b', 'ig'), "$1k"));
 rules.push(new Rule("Maand -> Mnd", new RegExp('\\b(m)aand\\b', 'ig'), "$1nd"));
 rules.push(new Rule("Jaar -> Jr", new RegExp('\\b(j)aar\\b', 'ig'), "$1r"));
@@ -132,20 +147,23 @@ rules.push(new Rule("Niet meer -> Nt mr", new RegExp('\\b(n)iet\\smeer\\b', 'ig'
 rules.push(new Rule("één -> 1", new RegExp('\\béén\\b', 'ig'), "1"));
 rules.push(new Rule("Sowieso -> Sws", new RegExp('\\b(s)owieso\\b', 'ig'), "$1ws"));
 rules.push(new Rule("Serieus -> Srs", new RegExp('\\b(s)erieus\\b', 'ig'), "$1rs"));
-rules.push(new Rule("Morgen -> Mrgn", new RegExp('\\b(m)orgen\\b', 'ig'), "$1rgn"));
 rules.push(new Rule("Straks -> Strax", new RegExp('\\b(s)traks\\b', 'ig'), "$1trax"));
+rules.push(new Rule("Wanneer -> Wnr", new RegExp('\\b(w)anneer\\b', 'ig'), "$1nr"));
+rules.push(new Rule("Door -> Dr", new RegExp('\\b(d)oor\\b', 'ig'), "$1r"));
 rules.push(new Rule("Naar -> Nr", new RegExp('\\b(n)aar\\b', 'ig'), "$1r"));
+rules.push(new Rule("Nog -> Ng", new RegExp('\\b(n)og\\b', 'ig'), "$1g"));
 rules.push(new Rule("Eens -> ns", new RegExp('\\beens\\b', 'ig'), "ns"));
 rules.push(new Rule("Met -> Mt", new RegExp('\\b(m)et\\b', 'ig'), "$1t"));
 rules.push(new Rule("Geen -> Gn", new RegExp('\\b(g)een\\b', 'ig'), "$1n"));
-
-// Samentrekkingen
-rules.push(new Rule("Aan het -> Aant", new RegExp('\\b(a)an\\shet\\b', 'ig'), "$1ant"));
+rules.push(new Rule("Aan het -> Ah", new RegExp('\\b(a)an\\shet\\b', 'ig'), "$1h"));
 rules.push(new Rule("Dat is -> Das", new RegExp('\\b(d)at\\sis\\b', 'ig'), "$1as"));
 rules.push(new Rule("Van de -> Vd", new RegExp('\\b(v)an\\s(d)e\\b', 'ig'), "$1$2"));
 rules.push(new Rule("Op de -> Od", new RegExp('\\b(o)p\\sde\\b', 'ig'), "$1d"));
+rules.push(new Rule("Aan de -> Ad", new RegExp('\\b(a)an\\sde\\b', 'ig'), "$1d"));
+rules.push(new Rule("In de -> Id", new RegExp('\\b(i)n\\sde\\b', 'ig'), "$1d"));
 rules.push(new Rule("Op het -> Op't", new RegExp('\\b(o)p\\shet\\b', 'ig'), "$1p't"));
 rules.push(new Rule("Het begint -> 't begint", new RegExp('\\bhet\\s(b)egint\\b', 'ig'), "'t $1egint"));
+rules.push(new Rule("Is het -> Ist", new RegExp('\\b(i)s\\shet\\b', 'ig'), "$1st"));
 
 // Definitely SMS taal
 rules.push(new Rule("Wacht -> w8", new RegExp('\\bwacht\\b', 'ig'), "w8"));
