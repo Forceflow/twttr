@@ -14,7 +14,7 @@ function RuleStat(used, savings){
 var rules = [];
 var rules_stats = [];
 
-// Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries
+// Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries, and \\s for explicit space whitespace
 
 // todo: meer samentrekkingen (ik heb -> kheb, kmoet, kzal)
 // todo: get funky met leestekens (whitespace achter komma of dubbelpunt wegdoen, drie puntjes naar 2 puntjes, foefelen met aanhalingstekens, twee spaties naar 1)
