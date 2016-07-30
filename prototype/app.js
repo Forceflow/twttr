@@ -31,6 +31,7 @@ function resetRuleStats(){
 
 // Reduce tweet using ALL known rules
 function tweetFullReduce(){
+	resetRuleStats();
 	// Get tweet, set undo history
 	var tweet = $(tweet_area).val();
 	undo_history.push(tweet);
