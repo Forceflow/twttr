@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <body>
+<h2>Twttr Proof Of Concept</h2>
+<div>Ik probeer je hart én karakters in je tweet te winnen.</div>
+</br>
 <div id="tweetarea">
 <textarea id="tweettext" rows="4" cols="100"></textarea>
 </div>
@@ -8,7 +14,7 @@
 <strong><span id="charcount">0</span></strong>
 </div>
 <button onclick="tweetFullReduce()">Reduce <strong>(apply all rules)</strong></button> </br>
-<button onclick="tweetFullReduce()">Reduce <strong>(apply rules until tweet is under 140 chars)</strong></button>
+<!-- <button onclick="tweetFullReduce()">Reduce <strong>(apply rules until tweet is under 140 chars)</strong></button> -->
 <h2 id="rules_list_title">Known Rules:</h2>
 <div id="rules_list"></div>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" type="text/javascript" defer="defer"></script>
