@@ -116,6 +116,14 @@ rules.push(new Rule("Negende -> 9e", new RegExp('\\bnegende\\b', 'ig'), "9e"));
 rules.push(new Rule("Tien -> 10", new RegExp('\\btien\\b', 'ig'), "10"));
 rules.push(new Rule("Tiende -> 10e", new RegExp('\\btiende\\b', 'ig'), "10e"));
 
+// spaces and punctuation
+rules.push(new Rule("+2 dezelfde leestekens", new RegExp('([?!:,;]|\\s)\\1+', 'ig'), "$1"));
+rules.push(new Rule("... -> ..", new RegExp('\\.\\.\\.+', 'ig'), ".."));
+rules.push(new Rule("Spaties voor leestekens", new RegExp('\\s([.,!?=(){}%&<>])', 'ig'), "$1"));
+//rules.push(new Rule("Spaties voor aanhalingstekens", new RegExp('\\s(["\'])', 'ig'), "$1"));
+// : and ; are used in smileys: not using them for now
+//rules.push(new Rule("Spaties na leestekens", new RegExp('([.,:!?=()])\\s', 'ig'), "$1"));
+
 // Less common
 rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
 rules.push(new Rule("Inderdaad -> Idd", new RegExp('\\b(i)nderdaad\\b', 'ig'), "$1dd"));
