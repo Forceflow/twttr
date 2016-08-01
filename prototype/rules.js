@@ -15,6 +15,7 @@ var rules = [];
 // todo: regels om getallen te vervangen
 // todo: synoniemen zoals tevens ook
 // todo: tautologieen
+// todo: dagen van de week / maanden
 
 // Algemeen aanvaard, zie https://nl.wikipedia.org/wiki/Lijst_van_afkortingen_in_het_Nederlands
 rules.push(new Rule("In combinatie met -> Icm", new RegExp('\\b(i)n\\scombinatie\\smet\\b', 'ig'), "$1cm"));
@@ -94,6 +95,7 @@ rules.push(new Rule("Decibel -> dB", new RegExp('decibel', 'ig'), "dB"));
 // Monetary value
 // rules.push(new Rule("Euro -> €", new RegExp('\\beuro\\b', 'ig'), "€"));
 rules.push(new Rule("Dollar -> $", new RegExp('\\bdollar\\b', 'ig'), "$"));
+rules.push(new Rule("Bitcoin -> BTC", new RegExp('\\bbitcoin\\b', 'ig'), "BTC"));
 
 // numbers
 rules.push(new Rule("Eerste -> 1e", new RegExp('\\beerste\\b', 'ig'), "1e"));
@@ -115,6 +117,10 @@ rules.push(new Rule("Negen -> 9", new RegExp('\\bnegen\\b', 'ig'), "9"));
 rules.push(new Rule("Negende -> 9e", new RegExp('\\bnegende\\b', 'ig'), "9e"));
 rules.push(new Rule("Tien -> 10", new RegExp('\\btien\\b', 'ig'), "10"));
 rules.push(new Rule("Tiende -> 10e", new RegExp('\\btiende\\b', 'ig'), "10e"));
+rules.push(new Rule("Elf -> 11", new RegExp('\\belf\\b', 'ig'), "11"));
+rules.push(new Rule("Elfde -> 11e", new RegExp('\\belfde\\b', 'ig'), "11e"));
+rules.push(new Rule("Twaalf -> 12", new RegExp('\\btwaalf\\b', 'ig'), "12"));
+rules.push(new Rule("Twaalfde -> 12e", new RegExp('\\btwaalfde\\b', 'ig'), "12e"));
 
 // Less common
 rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
@@ -145,14 +151,12 @@ rules.push(new Rule("Facebook -> Fb", new RegExp('\\b(f)acebook\\b', 'ig'), "$1b
 rules.push(new Rule("Gewoon -> Gwn", new RegExp('\\b(g)ewoon\\b', 'ig'), "$1wn"));
 rules.push(new Rule("Avatar -> Ava", new RegExp('\\b(a)vatar\\b', 'ig'), "$1va"));
 rules.push(new Rule("Website -> Site", new RegExp('\\bwebsite\\b', 'ig'), "site"));
-
 rules.push(new Rule("Vanavond -> Vnvd", new RegExp('\\b(v)anavond\\b', 'ig'), "$1nvd"));
 rules.push(new Rule("Vandaag -> Vdaag", new RegExp('\\b(v)andaag\\b', 'ig'), "$1daag"));
 rules.push(new Rule("Morgen -> Mrgn", new RegExp('\\b(m)orgen\\b', 'ig'), "$1rgn"));
 rules.push(new Rule("Week -> Wk", new RegExp('\\b(w)eek\\b', 'ig'), "$1k"));
 rules.push(new Rule("Maand -> Mnd", new RegExp('\\b(m)aand\\b', 'ig'), "$1nd"));
 rules.push(new Rule("Jaar -> Jr", new RegExp('\\b(j)aar\\b', 'ig'), "$1r"));
-rules.push(new Rule("Even -> ff", new RegExp('\\beven\\b', 'ig'), "ff"));
 rules.push(new Rule("Niet meer -> Nt mr", new RegExp('\\b(n)iet\\smeer\\b', 'ig'), "$1t mr"));
 rules.push(new Rule("één -> 1", new RegExp('\\béén\\b', 'ig'), "1"));
 rules.push(new Rule("Sowieso -> Sws", new RegExp('\\b(s)owieso\\b', 'ig'), "$1ws"));
@@ -176,9 +180,10 @@ rules.push(new Rule("Het begint -> 't begint", new RegExp('\\bhet\\s(b)egint\\b'
 rules.push(new Rule("Is het -> Ist", new RegExp('\\b(i)s\\shet\\b', 'ig'), "$1st"));
 
 // spaces and punctuation
-rules.push(new Rule("+2 dezelfde leestekens", new RegExp('([?!:,;]|\\s)\\1+', 'ig'), "$1"));
+rules.push(new Rule("Meerdere spaties -> 1 spatie", new RegExp('\\s+', 'ig'), " "));
+rules.push(new Rule("Meer dan 2 dezelfde leestekens na elkaar", new RegExp('([?!:,;]|\\s)\\1+', 'ig'), "$1"));
 rules.push(new Rule("... -> ..", new RegExp('\\.\\.\\.+', 'ig'), ".."));
-rules.push(new Rule("Spaties voor leestekens", new RegExp('\\s([.,!?=(){}%&<>])', 'ig'), "$1"));
+rules.push(new Rule("Spaties voor leestekens", new RegExp('\\s([.,!?=(){}%&<>°])', 'ig'), "$1"));
 //rules.push(new Rule("Spaties voor aanhalingstekens", new RegExp('\\s(["\'])', 'ig'), "$1"));
 // : and ; are used in smileys: not using them for now
 //rules.push(new Rule("Spaties na leestekens", new RegExp('([.,:!?=()])\\s', 'ig'), "$1"));
@@ -193,3 +198,4 @@ rules.push(new Rule("Succes -> suc6", new RegExp('\\bsucces\\b', 'ig'), "suc6"))
 rules.push(new Rule("Niet -> Nt", new RegExp('\\b(n)iet\\b', 'ig'), "$1t"));
 rules.push(new Rule("Mijn -> Mn", new RegExp('\\b(m)ijn\\b', 'ig'), "$1n"));
 rules.push(new Rule("Zijn -> Zn", new RegExp('\\b(z)ijn\\b', 'ig'), "$1n"));
+// rules.push(new Rule("Even -> ff", new RegExp('\\beven\\b', 'ig'), "ff"));
