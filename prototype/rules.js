@@ -5,14 +5,8 @@ function Rule(name, pattern, replace){
 	this.replace = replace;
 }
 
-function RuleStat(used, savings){
-	this.used = used;
-	this.savings = savings;
-}
-
 // Define rules here
 var rules = [];
-var rules_stats = [];
 
 // Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries, and \\s for explicit space whitespace
 
