@@ -84,8 +84,6 @@ function listRules(only_used = false){
 	}
 }
 
-resetRuleStats();
-
 // EVENT LISTENERS
 $(tweet_area).on("change input paste keyup", function() {
   var length = updateTweetCharCount();
