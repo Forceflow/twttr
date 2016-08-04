@@ -36,17 +36,20 @@ rules.push(new Rule("Ten aanzien van -> Tav", new RegExp('\\b(t)en\\saanzien\\sv
 rules.push(new Rule("Ter hoogte van -> Thv", new RegExp('\\b(t)er\\shoogte\\svan\\b', 'ig'), "$1hv"));
 rules.push(new Rule("Niet van toepassing -> Mbt", new RegExp('\\b(n)iet\\svan\\stoepassing\\b', 'ig'), "$1vt"));
 rules.push(new Rule("Van links naar rechts -> Vlnr", new RegExp('\\b(v)an\\slinks\\snaar\\srechts\\b', 'ig'), "$1lnr"));
+// van rechts naar links
 rules.push(new Rule("Tot en met -> Tem", new RegExp('\\b(t)ot\\sen\\smet\\b', 'ig'), "$1em"));
 rules.push(new Rule("Maximum -> Max", new RegExp('\\b(m)aximum\\b', 'ig'), "$1ax"));
 rules.push(new Rule("Minimum -> Min", new RegExp('\\b(m)inimum\\b', 'ig'), "$1in"));
 rules.push(new Rule("Exclusief -> Excl", new RegExp('\\b(e)xclusief\\b', 'ig'), "$1xcl"));
 rules.push(new Rule("Inclusief -> Incl", new RegExp('\\b(i)nclusief\\b', 'ig'), "$1ncl"));
 rules.push(new Rule("Enzovoort -> Enz", new RegExp('\\b(e)nzovoort\\b', 'ig'), "$1nz"));
+rules.push(new Rule("Aanstaande -> As", new RegExp('\\b(a)anstaande\\b', 'ig'), "$1s"));
 rules.push(new Rule("Onder andere -> Oa", new RegExp('\\b(o)nder\\sandere\\b', 'ig'), "$1a"));
 rules.push(new Rule("Onder invloed van -> Oiv", new RegExp('\\b(o)nder\\sinvloed\\svan\\b', 'ig'), "$1iv"));
 rules.push(new Rule("Onder leiding van -> Olv", new RegExp('\\b(o)nder\\sleiding\\svan\\b', 'ig'), "$1lv"));
 rules.push(new Rule("Als het ware -> Ahw", new RegExp('\\b(a)ls\\shet\\sware\\b', 'ig'), "$1hw"));
 rules.push(new Rule("Onder meer -> Om", new RegExp('\\b(o)nder\\smeer\\b', 'ig'), "$1m"));
+rules.push(new Rule("Met name -> Mn", new RegExp('\\b(m)et\\sname\\b', 'ig'), "$1n"));
 rules.push(new Rule("President -> Pres", new RegExp('\\b(p)resident\\b', 'ig'), "$1res"));
 rules.push(new Rule("Professor -> Prof", new RegExp('\\b(p)rofessor\\b', 'ig'), "$1rof"));
 rules.push(new Rule("De Heer -> Dhr", new RegExp('\\b(d)e\\sheer\\b', 'ig'), "$1hr"));
@@ -59,6 +62,10 @@ rules.push(new Rule("Telefoon -> Tel", new RegExp('\\b(t)elefoon\\b', 'ig'), "$1
 rules.push(new Rule("Televisie -> Tv", new RegExp('\\b(t)elevisie\\b', 'ig'), "$1v"));
 rules.push(new Rule("Junior -> Jr", new RegExp('\\b(j)unior\\b', 'ig'), "$1r"));
 rules.push(new Rule("Laboratorium -> Lab", new RegExp('\\b(d)e\\sheer\\b', 'ig'), "$1hr"));
+rules.push(new Rule("Europese Unie -> EU", new RegExp('\\b(e)uropese\\s(u)nie\\b', 'ig'), "$1$2"));
+rules.push(new Rule("Opmerking -> Opm", new RegExp('\\b(o)pmerking\\b', 'ig'), "$1pm"));
+rules.push(new Rule("Respectievelijk -> Resp", new Regexp('\\b(r)espectievelijk\\b', 'ig'), "$1esp"));
+// tot en met - t.e.m
 
 // Scientific units
 //Time
