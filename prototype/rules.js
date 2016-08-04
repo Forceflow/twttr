@@ -61,7 +61,7 @@ rules.push(new Rule("Redactie -> Red", new RegExp('\\b(r)edactie\\b', 'ig'), "$1
 rules.push(new Rule("Telefoon -> Tel", new RegExp('\\b(t)elefoon\\b', 'ig'), "$1el"));
 rules.push(new Rule("Televisie -> Tv", new RegExp('\\b(t)elevisie\\b', 'ig'), "$1v"));
 rules.push(new Rule("Junior -> Jr", new RegExp('\\b(j)unior\\b', 'ig'), "$1r"));
-rules.push(new Rule("Laboratorium -> Lab", new RegExp('\\b(d)e\\sheer\\b', 'ig'), "$1hr"));
+rules.push(new Rule("Laboratorium -> Lab", new RegExp('\\b(l)aboratorium\\b', 'ig'), "$1ab"));
 rules.push(new Rule("Europese Unie -> EU", new RegExp('\\b(e)uropese\\s(u)nie\\b', 'ig'), "$1$2"));
 rules.push(new Rule("Opmerking -> Opm", new RegExp('\\b(o)pmerking\\b', 'ig'), "$1pm"));
 rules.push(new Rule("Respectievelijk -> Resp", new Regexp('\\b(r)espectievelijk\\b', 'ig'), "$1esp"));
