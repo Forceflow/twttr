@@ -15,7 +15,6 @@ var rules = [];
 // todo: regels om getallen te vervangen
 // todo: synoniemen zoals tevens ook
 // todo: tautologieen
-// todo: dagen van de week / maanden
 
 // Algemeen aanvaard, zie https://nl.wikipedia.org/wiki/Lijst_van_afkortingen_in_het_Nederlands
 rules.push(new Rule("In combinatie met -> Icm", new RegExp('\\b(i)n\\scombinatie\\smet\\b', 'ig'), "$1cm"));
@@ -36,7 +35,7 @@ rules.push(new Rule("Ten aanzien van -> Tav", new RegExp('\\b(t)en\\saanzien\\sv
 rules.push(new Rule("Ter hoogte van -> Thv", new RegExp('\\b(t)er\\shoogte\\svan\\b', 'ig'), "$1hv"));
 rules.push(new Rule("Niet van toepassing -> Mbt", new RegExp('\\b(n)iet\\svan\\stoepassing\\b', 'ig'), "$1vt"));
 rules.push(new Rule("Van links naar rechts -> Vlnr", new RegExp('\\b(v)an\\slinks\\snaar\\srechts\\b', 'ig'), "$1lnr"));
-// van rechts naar links
+rules.push(new Rule("Van rechts naar links -> Vrnl", new RegExp('\\b(v)an\\srechts\\snaar\\slinks\\b', 'ig'), "$1rnl"));
 rules.push(new Rule("Tot en met -> Tem", new RegExp('\\b(t)ot\\sen\\smet\\b', 'ig'), "$1em"));
 rules.push(new Rule("Maximum -> Max", new RegExp('\\b(m)aximum\\b', 'ig'), "$1ax"));
 rules.push(new Rule("Minimum -> Min", new RegExp('\\b(m)inimum\\b', 'ig'), "$1in"));
@@ -64,7 +63,8 @@ rules.push(new Rule("Junior -> Jr", new RegExp('\\b(j)unior\\b', 'ig'), "$1r"));
 rules.push(new Rule("Laboratorium -> Lab", new RegExp('\\b(l)aboratorium\\b', 'ig'), "$1ab"));
 rules.push(new Rule("Europese Unie -> EU", new RegExp('\\b(e)uropese\\s(u)nie\\b', 'ig'), "$1$2"));
 rules.push(new Rule("Opmerking -> Opm", new RegExp('\\b(o)pmerking\\b', 'ig'), "$1pm"));
-rules.push(new Rule("Respectievelijk -> Resp", new Regexp('\\b(r)espectievelijk\\b', 'ig'), "$1esp"));
+rules.push(new Rule("Respectievelijk -> Resp", new RegExp('\\b(r)espectievelijk\\b', 'ig'), "$1esp"));
+rules.push(new Rule("Tot en met -> Tem", new RegExp('\\b(t)ot\\sen\\smet\\b', 'ig'), "$1em"));
 // tot en met - t.e.m
 
 // Scientific units
@@ -129,6 +129,28 @@ rules.push(new Rule("Elfde -> 11e", new RegExp('\\belfde\\b', 'ig'), "11e"));
 rules.push(new Rule("Twaalf -> 12", new RegExp('\\btwaalf\\b', 'ig'), "12"));
 rules.push(new Rule("Twaalfde -> 12e", new RegExp('\\btwaalfde\\b', 'ig'), "12e"));
 
+// Days of the week
+rules.push(new Rule("Maandag -> Ma", new RegExp('\\b(m)aandag\\b', 'ig'), "$1a"));
+rules.push(new Rule("Dinsdag -> Di", new RegExp('\\b(d)insdag\\b', 'ig'), "$1i"));
+rules.push(new Rule("Woensdag -> Woe", new RegExp('\\b(w)oensdag\\b', 'ig'), "$1oe"));
+rules.push(new Rule("Donderdag -> Do", new RegExp('\\b(d)onderdag\\b', 'ig'), "$1o"));
+rules.push(new Rule("Vrijdag -> Vrij", new RegExp('\\b(v)rijdag\\b', 'ig'), "$vrij"));
+rules.push(new Rule("Zaterdag -> Zat", new RegExp('\\b(z)aterdag\\b', 'ig'), "$1at"));
+rules.push(new Rule("Zondag -> Zon", new RegExp('\\b(z)ondag\\b', 'ig'), "$1on"));
+
+// Months
+rules.push(new Rule("Januari -> Jan", new RegExp('\\b(j)anuari\\b', 'ig'), "$1an"));
+rules.push(new Rule("Februari -> Feb", new RegExp('\\b(f)ebruari\\b', 'ig'), "$1eb"));
+rules.push(new Rule("Maart -> Mrt", new RegExp('\\b(m)aart\\b', 'ig'), "$1rt"));
+rules.push(new Rule("April -> Apr", new RegExp('\\b(a)pril\\b', 'ig'), "$1pr"));
+rules.push(new Rule("Juni -> Jun", new RegExp('\\b(j)uni\\b', 'ig'), "$1un"));
+rules.push(new Rule("Juli -> Jul", new RegExp('\\b(j)uli\\b', 'ig'), "$1ul"));
+rules.push(new Rule("Augustus -> Aug", new RegExp('\\b(a)ugustus\\b', 'ig'), "$1ug"));
+rules.push(new Rule("September -> Sep", new RegExp('\\b(s)eptember\\b', 'ig'), "$1ep"));
+rules.push(new Rule("Oktober -> Okt", new RegExp('\\b(o)ktober\\b', 'ig'), "$1kt"));
+rules.push(new Rule("November -> Nov", new RegExp('\\b(n)ovember\\b', 'ig'), "$1ov"));
+rules.push(new Rule("December -> Dec", new RegExp('\\b(d)ecember\\b', 'ig'), "$1ec"));
+
 // Less common
 rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "$1ss"));
 rules.push(new Rule("Inderdaad -> Idd", new RegExp('\\b(i)nderdaad\\b', 'ig'), "$1dd"));
@@ -191,6 +213,7 @@ rules.push(new Rule("Meerdere spaties -> 1 spatie", new RegExp('\\s+', 'ig'), " 
 rules.push(new Rule("Meer dan 2 dezelfde leestekens na elkaar", new RegExp('([?!:,;]|\\s)\\1+', 'ig'), "$1"));
 rules.push(new Rule("... -> ..", new RegExp('\\.\\.\\.+', 'ig'), ".."));
 rules.push(new Rule("Spaties voor leestekens", new RegExp('\\s([.,!?=(){}%&<>°])', 'ig'), "$1"));
+
 //rules.push(new Rule("Spaties voor aanhalingstekens", new RegExp('\\s(["\'])', 'ig'), "$1"));
 // : and ; are used in smileys: not using them for now
 //rules.push(new Rule("Spaties na leestekens", new RegExp('([.,:!?=()])\\s', 'ig'), "$1"));
