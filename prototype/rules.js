@@ -8,13 +8,10 @@ function Rule(name, pattern, replace){
 // Define rules here
 var rules = [];
 
-// Notes: we use groups () to preserve case for first character, as well as \\b for word boundaries, and \\s for explicit space whitespace
-
 // todo: meer samentrekkingen (ik heb -> kheb, kmoet, kzal)
-// todo: get funky met leestekens (whitespace achter komma of dubbelpunt wegdoen, drie puntjes naar 2 puntjes, foefelen met aanhalingstekens, twee spaties naar 1)
-// todo: regels om getallen te vervangen
 // todo: synoniemen zoals tevens ook
 // todo: tautologieen
+// meer meervouden met [s]*
 
 // Algemeen aanvaard, zie https://nl.wikipedia.org/wiki/Lijst_van_afkortingen_in_het_Nederlands
 rules.push(new Rule("In combinatie met -> Icm", new RegExp('\\b(i)n\\scombinatie\\smet\\b', 'ig'), "$1cm"));
@@ -23,6 +20,7 @@ rules.push(new Rule("In plaats van -> Ipv", new RegExp('\\b(i)n\\splaats\\svan\\
 rules.push(new Rule("Met behulp van -> Mbv", new RegExp('\\b(m)et\\sbehulp\\svan\\b', 'ig'), "$1bv"));
 rules.push(new Rule("In vergelijking met -> Ivm", new RegExp('\\b(i)n\\s(v)ergelijking\\s(m)et\\b', 'ig'), "$1$2$3"));
 rules.push(new Rule("In verband met -> Ivm", new RegExp('\\b(i)n\\s(v)erband\\s(m)et\\b', 'ig'), "$1$2$3"));
+rules.push(new Rule("In opdracht van -> Iov", new RegExp('\\b(i)n\\s(o)pdracht\\s(v)an\\b', 'ig'), "$1$2$3"));
 rules.push(new Rule("Door middel van -> Dmv", new RegExp('\\b(d)oor\\smiddel\\svan\\b', 'ig'), "$1mv"));
 rules.push(new Rule("Naar aanleiding van -> Dmv", new RegExp('\\b(n)aar\\saanleiding\\svan\\b', 'ig'), "$1av"));
 rules.push(new Rule("Aan de hand van -> Adhv", new RegExp('\\b(a)an\\s(d)e\\s(h)and\\s(v)an\\b', 'ig'), "$1$2$3$4"));
@@ -30,9 +28,14 @@ rules.push(new Rule("Met andere woorden -> Maw", new RegExp('\\b(m)et\\sandere\\
 rules.push(new Rule("En andere -> Ea", new RegExp('\\b(e)n\\sandere\\b', 'ig'), "$1a"));
 rules.push(new Rule("En dergelijke -> Ed", new RegExp('\\b(e)n\\sdergelijke\\b', 'ig'), "$1d"));
 rules.push(new Rule("In tegenstelling tot -> Itt", new RegExp('\\b(i)n\\stegenstelling\\stot\\b', 'ig'), "$1tt"));
+rules.push(new Rule("Dat wil zeggen -> Dwz", new RegExp('\\b(d)at\\swil\\szeggen\\b', 'ig'), "$1wz"));
 rules.push(new Rule("Met betrekking tot -> Mbt", new RegExp('\\b(m)et\\sbetrekking\\stot\\b', 'ig'), "$1bt"));
+rules.push(new Rule("Met medewerking van -> Mmv", new RegExp('\\b(m)et\\smedewerking\\svan\\b', 'ig'), "$1mv"));
 rules.push(new Rule("Ten aanzien van -> Tav", new RegExp('\\b(t)en\\saanzien\\svan\\b', 'ig'), "$1av"));
 rules.push(new Rule("Ter hoogte van -> Thv", new RegExp('\\b(t)er\\shoogte\\svan\\b', 'ig'), "$1hv"));
+rules.push(new Rule("Ter waarde van -> Twv", new RegExp('\\b(t)er\\shoogte\\svan\\b', 'ig'), "$1hv"));
+rules.push(new Rule("Ten opzichte van -> Tov", new RegExp('\\b(t)er\\swaarde\\svan\\b', 'ig'), "$1wv"));
+rules.push(new Rule("Ten gevolge van -> Tgv", new RegExp('\\b(t)en\\sgevolge\\svan\\b', 'ig'), "$1gv"));
 rules.push(new Rule("Niet van toepassing -> Mbt", new RegExp('\\b(n)iet\\svan\\stoepassing\\b', 'ig'), "$1vt"));
 rules.push(new Rule("Van links naar rechts -> Vlnr", new RegExp('\\b(v)an\\slinks\\snaar\\srechts\\b', 'ig'), "$1lnr"));
 rules.push(new Rule("Van rechts naar links -> Vrnl", new RegExp('\\b(v)an\\srechts\\snaar\\slinks\\b', 'ig'), "$1rnl"));
@@ -65,44 +68,55 @@ rules.push(new Rule("Europese Unie -> EU", new RegExp('\\b(e)uropese\\s(u)nie\\b
 rules.push(new Rule("Opmerking -> Opm", new RegExp('\\b(o)pmerking\\b', 'ig'), "$1pm"));
 rules.push(new Rule("Respectievelijk -> Resp", new RegExp('\\b(r)espectievelijk\\b', 'ig'), "$1esp"));
 rules.push(new Rule("Tot en met -> Tem", new RegExp('\\b(t)ot\\sen\\smet\\b', 'ig'), "$1em"));
-// tot en met - t.e.m
 
 // Scientific units
 //Time
 rules.push(new Rule("Uur -> u", new RegExp('\\buur\\b', 'ig'), "u"));
+rules.push(new Rule("Uren -> u", new RegExp('\\buren\\b', 'ig'), "u"));
 rules.push(new Rule("Minuut -> m", new RegExp('\\bminuut\\b', 'ig'), "min"));
 rules.push(new Rule("Minuten -> m", new RegExp('\\bminuten\\b', 'ig'), "min"));
-rules.push(new Rule("Seconde -> s", new RegExp('\\bseconde\\b', 'ig'), "sec"));
-rules.push(new Rule("Seconden -> s", new RegExp('\\bseconden\\b', 'ig'), "sec"));
-rules.push(new Rule("Milliseconde -> s", new RegExp('\\bmilliseconde\\b', 'ig'), "ms"));
-rules.push(new Rule("Milliseconden -> s", new RegExp('\\bmilliseconden\\b', 'ig'), "ms"));
+rules.push(new Rule("Seconde(n) -> s", new RegExp('\\bseconde[n]*\\b', 'ig'), "sec"));
+rules.push(new Rule("Milliseconde(n) -> ms", new RegExp('\\bmilliseconde[n]*\\b', 'ig'), "ms"));
+rules.push(new Rule("Microseconde(n) -> Âµs", new RegExp('\\bmicroseconde[n]*\\b', 'ig'), "Âµs"));
 //Distance
-rules.push(new Rule("Meter -> m", new RegExp('\\bmeter\\b', 'ig'), "m"));
-rules.push(new Rule("Kilometer -> Km", new RegExp('(k)ilometer', 'ig'), "$1m"));
-rules.push(new Rule("Decimeter -> Dm", new RegExp('(d)ecimeter', 'ig'), "$1m"));
-rules.push(new Rule("Centimeter -> Cm", new RegExp('(c)entimeter', 'ig'), "$1m"));
-rules.push(new Rule("Millimeter -> Mm", new RegExp('(m)illimeter', 'ig'), "$1m"));
+rules.push(new Rule("Meter(s) -> m", new RegExp('\\bmeter[s]*\\b', 'ig'), "m"));
+rules.push(new Rule("Kilometer(s) -> Km", new RegExp('(k)ilometer[s]*', 'ig'), "$1m"));
+rules.push(new Rule("Decimeter(s) -> Dm", new RegExp('(d)ecimeter[s]*', 'ig'), "$1m"));
+rules.push(new Rule("Centimeter(s) -> Cm", new RegExp('(c)entimeter[s]*', 'ig'), "$1m"));
+rules.push(new Rule("Millimeter(s) -> Mm", new RegExp('(m)illimeter[s]*', 'ig'), "$1m"));
+rules.push(new Rule("Nanometer(s) -> Nm", new RegExp('(n)anometer[s]*', 'ig'), "$1m"));
 // Volume
-rules.push(new Rule("Liter -> l", new RegExp('\\bliter\\b', 'ig'), "l"));
-rules.push(new Rule("Deciliter -> Dl", new RegExp('(d)eciliter', 'ig'), "$1l"));
-rules.push(new Rule("Centiliter -> Cl", new RegExp('(c)entiliter', 'ig'), "$1l"));
-rules.push(new Rule("Milliliter-> Cl", new RegExp('(m)illiliter', 'ig'), "$1l"));
+rules.push(new Rule("Liter(s) -> l", new RegExp('\\bliter[s]*\\b', 'ig'), "l"));
+rules.push(new Rule("Deciliter(s) -> Dl", new RegExp('(d)eciliter[s]*', 'ig'), "$1l"));
+rules.push(new Rule("Centiliter(s) -> Cl", new RegExp('(c)entiliter[s]*', 'ig'), "$1l"));
+rules.push(new Rule("Milliliter(s)-> Cl", new RegExp('(m)illiliter[s]*', 'ig'), "$1l"));
 // Mass
-rules.push(new Rule("Gram -> gr", new RegExp('\\bgram\\b', 'ig'), "gr"));
+rules.push(new Rule("Ton -> t", new RegExp('\\bton\\b', 'ig'), "t"));
 rules.push(new Rule("Kilogram -> Kg", new RegExp('(k)ilogram', 'ig'), "$1g"));
+rules.push(new Rule("Gram -> gr", new RegExp('\\bgram\\b', 'ig'), "gr"));
 rules.push(new Rule("Milligram-> Cl", new RegExp('(m)illigram', 'ig'), "$1g"));
 // Digital sizes
-rules.push(new Rule("Gigabit -> Gb", new RegExp('gigabit', 'ig'), "Gb"));
-rules.push(new Rule("Gigabyte -> GB", new RegExp('gigabyte', 'ig'), "GB"));
-rules.push(new Rule("Megabit -> Mb", new RegExp('megabit', 'ig'), "Mb"));
-rules.push(new Rule("Megabyte -> MB", new RegExp('megabyte', 'ig'), "MB"));
-rules.push(new Rule("Kilobit -> Kb", new RegExp('kilobit', 'ig'), "kb"));
-rules.push(new Rule("Kilobyte -> KB", new RegExp('kilobyte', 'ig'), "KB"));
+rules.push(new Rule("Petabit(s) -> Pb", new RegExp('petabit[s]*', 'ig'), "Pb"));
+rules.push(new Rule("Petabyte(s) -> PB", new RegExp('petabyte[s]*', 'ig'), "PB"));
+rules.push(new Rule("Terabit(s) -> Tb", new RegExp('terabit[s]*', 'ig'), "Tb"));
+rules.push(new Rule("Terabyte(s) -> TB", new RegExp('terabyte[s]*', 'ig'), "TB"));
+rules.push(new Rule("Gigabit(s) -> Gb", new RegExp('gigabit[s]*', 'ig'), "Gb"));
+rules.push(new Rule("Gigabyte(s) -> GB", new RegExp('gigabyte[s]*', 'ig'), "GB"));
+rules.push(new Rule("Megabit(s) -> Mb", new RegExp('megabit[s]*', 'ig'), "Mb"));
+rules.push(new Rule("Megabyte(s) -> MB", new RegExp('megabyte[s]*', 'ig'), "MB"));
+rules.push(new Rule("Kilobit(s) -> Kb", new RegExp('kilobit[s]*', 'ig'), "Kb"));
+rules.push(new Rule("Kilobyte(s) -> KB", new RegExp('kilobyte[s]*', 'ig'), "KB"));
+rules.push(new Rule("Byte(s) -> B", new RegExp('\\bbyte[s]*\\b', 'ig'), "B"));
+rules.push(new Rule("Bit(s) -> b", new RegExp('\\bbit[s]*\\b', 'ig'), "b"));
+// Temperature
+rules.push(new Rule("Celsius -> Â°C", new RegExp('\\bcelsius\\b', 'ig'), "Â°C"));
+rules.push(new Rule("Kelvin -> K", new RegExp('\\bkelvin\\b', 'ig'), "K"));
+// Various
 rules.push(new Rule("Decibel -> dB", new RegExp('decibel', 'ig'), "dB"));
-// Monetary value
-// rules.push(new Rule("Euro -> €", new RegExp('\\beuro\\b', 'ig'), "€"));
-rules.push(new Rule("Dollar -> $", new RegExp('\\bdollar\\b', 'ig'), "$"));
-rules.push(new Rule("Bitcoin -> BTC", new RegExp('\\bbitcoin\\b', 'ig'), "BTC"));
+// Monetary
+rules.push(new Rule("Euro(s) -> â‚¬", new RegExp('\\beuro[s]*\\b', 'ig'), "â‚¬"));
+rules.push(new Rule("Dollar(s) -> $", new RegExp('\\bdollar[s]*\\b', 'ig'), "$"));
+rules.push(new Rule("Bitcoin(s) -> BTC", new RegExp('\\bbitcoin[s]*\\b', 'ig'), "BTC"));
 
 // numbers
 rules.push(new Rule("Eerste -> 1e", new RegExp('\\beerste\\b', 'ig'), "1e"));
@@ -143,6 +157,7 @@ rules.push(new Rule("Januari -> Jan", new RegExp('\\b(j)anuari\\b', 'ig'), "$1an
 rules.push(new Rule("Februari -> Feb", new RegExp('\\b(f)ebruari\\b', 'ig'), "$1eb"));
 rules.push(new Rule("Maart -> Mrt", new RegExp('\\b(m)aart\\b', 'ig'), "$1rt"));
 rules.push(new Rule("April -> Apr", new RegExp('\\b(a)pril\\b', 'ig'), "$1pr"));
+// mei wordt niet afgekort
 rules.push(new Rule("Juni -> Jun", new RegExp('\\b(j)uni\\b', 'ig'), "$1un"));
 rules.push(new Rule("Juli -> Jul", new RegExp('\\b(j)uli\\b', 'ig'), "$1ul"));
 rules.push(new Rule("Augustus -> Aug", new RegExp('\\b(a)ugustus\\b', 'ig'), "$1ug"));
@@ -156,6 +171,7 @@ rules.push(new Rule("Misschien -> Mss", new RegExp('\\b(m)isschien\\b', 'ig'), "
 rules.push(new Rule("Inderdaad -> Idd", new RegExp('\\b(i)nderdaad\\b', 'ig'), "$1dd"));
 rules.push(new Rule("Namelijk -> Nl", new RegExp('\\b(n)amelijk\\b', 'ig'), "$1l"));
 rules.push(new Rule("Voornamelijk -> Vnl", new RegExp('\\b(v)oornamelijk\\b', 'ig'), "$1nl"));
+rules.push(new Rule("Zogenaamd -> Zgn", new RegExp('\\b(z)ogenaamd\\b', 'ig'), "$1gn"));
 rules.push(new Rule("Bijvoorbeeld -> Bv", new RegExp('\\b(b)ijvoorbeeld\\b', 'ig'), "$1v"));
 rules.push(new Rule("Waarschijnlijk -> Waarsch", new RegExp('\\b(w)aarschijnlijk\\b', 'ig'), "$1aarsch"));
 rules.push(new Rule("Waarom -> Wrm", new RegExp('\\b(w)aarom\\b', 'ig'), "$1rm"));
@@ -171,6 +187,7 @@ rules.push(new Rule("Uitsluitend -> Uitsl", new RegExp('\\b(u)itsluitend\\b', 'i
 rules.push(new Rule("Uitzonderlijk -> Uitzl", new RegExp('\\b(u)itzonderlijk\\b', 'ig'), "$1itzl"));
 rules.push(new Rule("Nummer -> Nr", new RegExp('\\b(n)ummer\\b', 'ig'), "$1r"));
 rules.push(new Rule("Nummers -> Nrs", new RegExp('\\b(n)ummers\\b', 'ig'), "$1rs"));
+rules.push(new Rule("Volgende -> Vlg", new RegExp('\\b(v)olgende\\b', 'ig'), "$1lg"));
 rules.push(new Rule("Of course -> Ofc", new RegExp('\\b(o)f\\scourse\\b', 'ig'), "$1fc"));
 rules.push(new Rule("Oh My God -> Omg", new RegExp('\\b(o)h\\smy\\sgod\\b', 'ig'), "$1mg"));
 rules.push(new Rule("Thanks -> Thx", new RegExp('\\b(t)hanks\\b', 'ig'), "$1hx"));
@@ -180,6 +197,7 @@ rules.push(new Rule("Facebook -> Fb", new RegExp('\\b(f)acebook\\b', 'ig'), "$1b
 rules.push(new Rule("Gewoon -> Gwn", new RegExp('\\b(g)ewoon\\b', 'ig'), "$1wn"));
 rules.push(new Rule("Avatar -> Ava", new RegExp('\\b(a)vatar\\b', 'ig'), "$1va"));
 rules.push(new Rule("Website -> Site", new RegExp('\\bwebsite\\b', 'ig'), "site"));
+rules.push(new Rule("E-mail -> Mail", new RegExp('\\b(e)-mail\\b', 'ig'), "mail"));
 rules.push(new Rule("Vanavond -> Vnvd", new RegExp('\\b(v)anavond\\b', 'ig'), "$1nvd"));
 rules.push(new Rule("Vandaag -> Vdaag", new RegExp('\\b(v)andaag\\b', 'ig'), "$1daag"));
 rules.push(new Rule("Morgen -> Mrgn", new RegExp('\\b(m)orgen\\b', 'ig'), "$1rgn"));
@@ -187,7 +205,7 @@ rules.push(new Rule("Week -> Wk", new RegExp('\\b(w)eek\\b', 'ig'), "$1k"));
 rules.push(new Rule("Maand -> Mnd", new RegExp('\\b(m)aand\\b', 'ig'), "$1nd"));
 rules.push(new Rule("Jaar -> Jr", new RegExp('\\b(j)aar\\b', 'ig'), "$1r"));
 rules.push(new Rule("Niet meer -> Nt mr", new RegExp('\\b(n)iet\\smeer\\b', 'ig'), "$1t mr"));
-rules.push(new Rule("één -> 1", new RegExp('\\béén\\b', 'ig'), "1"));
+rules.push(new Rule("Ã©Ã©n -> 1", new RegExp('\\bÃ©Ã©n\\b', 'ig'), "1"));
 rules.push(new Rule("Sowieso -> Sws", new RegExp('\\b(s)owieso\\b', 'ig'), "$1ws"));
 rules.push(new Rule("Serieus -> Srs", new RegExp('\\b(s)erieus\\b', 'ig'), "$1rs"));
 rules.push(new Rule("Straks -> Strax", new RegExp('\\b(s)traks\\b', 'ig'), "$1trax"));
@@ -208,7 +226,7 @@ rules.push(new Rule("Op het -> Op't", new RegExp('\\b(o)p\\shet\\b', 'ig'), "$1p
 rules.push(new Rule("Het begint -> 't begint", new RegExp('\\bhet\\s(b)egint\\b', 'ig'), "'t $1egint"));
 rules.push(new Rule("Is het -> Ist", new RegExp('\\b(i)s\\shet\\b', 'ig'), "$1st"));
 
-// spaces and punctuation
+// Leestekens
 rules.push(new Rule("Meerdere spaties -> 1 spatie", new RegExp('\\s+', 'ig'), " "));
 rules.push(new Rule("Meer dan 2 dezelfde leestekens na elkaar", new RegExp('([?!:,;]|\\s)\\1+', 'ig'), "$1"));
 rules.push(new Rule("... -> ..", new RegExp('\\.\\.\\.+', 'ig'), ".."));
@@ -222,6 +240,7 @@ rules.push(new Rule("Spaties voor leestekens", new RegExp('\\s([.,!?=(){}%&<>°])
 // Definitely SMS taal
 rules.push(new Rule("Wacht -> w8", new RegExp('\\bwacht\\b', 'ig'), "w8"));
 rules.push(new Rule("Dacht -> d8", new RegExp('\\bdacht\\b', 'ig'), "d8"));
+rules.push(new Rule("Daarom -> Drm", new RegExp('\\b(d)aarom\\b', 'ig'), "$1rm"));
 rules.push(new Rule("Succes -> suc6", new RegExp('\\bsucces\\b', 'ig'), "suc6"));
 
 // Overlap
