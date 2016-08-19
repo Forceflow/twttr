@@ -232,10 +232,10 @@ rules.push(new Rule("Meer dan 2 dezelfde leestekens na elkaar", new RegExp('([?!
 rules.push(new Rule("... -> ..", new RegExp('\\.\\.\\.+', 'ig'), ".."));
 rules.push(new Rule("Spaties voor leestekens", new RegExp('\\s([.,!?=(){}%&<>°])', 'ig'), "$1"));
 
-//rules.push(new Rule("Spaties voor aanhalingstekens", new RegExp('\\s(["\'])', 'ig'), "$1"));
+// rules.push(new Rule("Spaties voor aanhalingstekens", new RegExp('\\s(["\'])', 'ig'), "$1"));
 // : and ; are used in smileys: not using them for now
-//rules.push(new Rule("Spaties na leestekens", new RegExp('([.,:!?=()])\\s', 'ig'), "$1"));
-//spaties na een punt?
+// rules.push(new Rule("Spaties na leestekens", new RegExp('([.,:!?=()])\\s', 'ig'), "$1"));
+// spaties na een punt?
 
 // Definitely SMS taal
 rules.push(new Rule("Wacht -> w8", new RegExp('\\bwacht\\b', 'ig'), "w8"));
