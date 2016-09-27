@@ -235,7 +235,7 @@ rules.push(new Rule("Spaties voor leestekens", new RegExp('\\s([.,!?=(){}%&<>°])
 // rules.push(new Rule("Spaties voor aanhalingstekens", new RegExp('\\s(["\'])', 'ig'), "$1"));
 // : and ; are used in smileys: not using them for now
 // rules.push(new Rule("Spaties na leestekens", new RegExp('([.,:!?=()])\\s', 'ig'), "$1"));
-// spaties na een punt?
+// spaties na een punt? weghalen in bepaalde gevallen: einde tweet, ...
 
 // Definitely SMS taal
 rules.push(new Rule("Wacht -> w8", new RegExp('\\bwacht\\b', 'ig'), "w8"));
