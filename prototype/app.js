@@ -63,6 +63,12 @@ function tweetFullReduce(){
 	console.log("I saved " + (before_count - tweet.length) + " characters.")
 }
 
+function undo(){
+	// pop one thing off undo stack
+	var previous = undo_history.pop();
+	$(tweet_area).val(previous);
+}
+
 // List all the rules we're using
 function listRules(only_used = false){
 	var html = "<ul>";

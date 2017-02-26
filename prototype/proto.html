@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -13,7 +14,7 @@
 <div>
 <strong><span id="charcount">0</span></strong>
 </div>
-<button onclick="tweetFullReduce()">Reduce <strong>(apply all rules)</strong></button> </br>
+<button onclick="tweetFullReduce()">Reduce <strong>(apply all rules)</strong></button> <button onclick="undo()">Undo</button> </br>
 <!-- <button onclick="tweetFullReduce()">Reduce <strong>(apply rules until tweet is under 140 chars)</strong></button> -->
 <h2 id="rules_list_title">Known Rules:</h2>
 <div id="rules_list"></div>
